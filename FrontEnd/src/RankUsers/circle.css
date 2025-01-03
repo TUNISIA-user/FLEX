@@ -1,0 +1,13 @@
+.circle {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%; /* Fully rounded */
+   
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Ignore mouse events */
+    z-index: 99999999; /* Ensure it's above everything */
+  }
+  
+ 

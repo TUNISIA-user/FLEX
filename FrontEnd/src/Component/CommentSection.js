@@ -68,7 +68,8 @@ const CommentSection = ({ b }) => {
                         </div>
                     </div>
                     <p className="comment-content">
-                     {b.comment}  
+                        <pre>   {b.comment}    </pre>
+                    
                      {/* <pre>  
                         <Latex > 
                            {sampleLatex}z

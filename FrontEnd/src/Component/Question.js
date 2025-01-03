@@ -2,6 +2,7 @@ import React from 'react'
 import "./Question.css"
 import { useGlobalContext } from '../Store/GlobalContext'
 import { useNavigate } from 'react-router-dom'
+
 const Question = ({document}) => {
   const {dispatch} = useGlobalContext()
   const Nav = useNavigate()
@@ -10,7 +11,7 @@ const Question = ({document}) => {
       type:"ADD__QUESTION",
       payload2 : document
     })
-    // console.log(document)
+   
     Nav("/HeadersTopQuestion")
 
   }

@@ -1,0 +1,47 @@
+.CardChat--1 {
+    width: 250px;
+    height: 310px;
+    background-color: aliceblue;
+    
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    overflow: hidden; /* Hide overflow */
+    transition: transform 0.3s ease; /* Transition for hover effect */
+}
+
+ 
+.CardChat--image {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center the image */
+}
+
+.CardChat--image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the container */
+   
+}
+
+ 
+ 
+
+.CardChat--text {
+    margin-top: 10px;
+    font-size: 24px; /* Adjusted font size */
+    font-weight: bold;
+    text-align: center; /* Centered text */
+    color: #333; /* Darker text color */
+    padding: 0 10px; /* Padding for text */
+}
+
+.cardBetween {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center aligned items */
+    padding: 10px; /* Padding for spacing */
+    
+}

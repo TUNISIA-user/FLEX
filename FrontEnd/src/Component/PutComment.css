@@ -1,14 +1,14 @@
 /* Container for the reply form */
 .text-box {
     width: 100%;
-    background-color: #f1f1f1;
+    background-color: #0E1217;
     padding: 10px;
     border-radius: 8px;
   }
   
   /* Box container styling */
   .text-box .box-container {
-    background-color: #ffffff;
+    background-color: #0E1217 ;
     border-radius: 8px;
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -73,7 +73,7 @@
   
  .EmojiFpramtingx{
     position: absolute;
-    top:1300px;
+    top:1570px;
     margin-left: 10px;
  }
 
@@ -123,9 +123,10 @@ input[type="file"] {
 }
 
 .container--file--Upload--Join{
-  background-color: red;
+ 
   display: flex;
   align-items: center;
+  
 }
 .containerDispalyImage img{
   width: 200px;

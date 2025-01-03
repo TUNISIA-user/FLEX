@@ -1,0 +1,11 @@
+{
+    "login": "créer votre cv gratuitement",
+    "description": "Cette description apparaît en français.",
+    "username" : "prénom",
+    "password": "mot de passe",
+    "button": {
+      "submit": "Soumettre",
+      "cancel": "Annuler"
+    }
+  }
+  

@@ -1,0 +1,34 @@
+.MainSection{
+    background-color: rgb(16, 77, 138);
+    width: 85%;
+
+}
+.choise{
+    width: 100%;
+    display: flex;  
+    gap:10px;
+    flex-wrap: wrap;
+    background-color: red;
+    cursor: pointer;
+}
+.mainContainer{
+    display: flex;
+     
+}
+.pubFlex{
+  background-color: rgb(165, 133, 45);
+}
+
+.pubFlex video{
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    
+  }
+
+  .videoClasses{
+    display: flex;
+    margin: 6px;
+    flex-wrap: wrap;
+    gap: 5px;
+}

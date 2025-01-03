@@ -1,12 +1,13 @@
 /* src/Component/TextAreaSection.css */
 
 .latex-renderer {
-    max-width: 800px;
+     width: 100%;
     margin: 20px auto;
     padding: 20px;
     border-radius: 8px;
     background-color: #f8f9f9; /* Light gray background */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: black;
   }
   
   .latex-renderer h1 {
@@ -76,3 +77,24 @@
     overflow-x: auto;
   }
   
+
+  .sumbitButtonDesigned{
+    padding: 10px;
+    border: none;
+    font-size: 30px;
+    background-color: black;
+   
+    
+  }
+
+  .sumbitButtonDesigned:hover{
+    
+     background-color: rgb(22, 21, 21); 
+  }
+
+
+  .ContainersumbitButtonDesigned{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }

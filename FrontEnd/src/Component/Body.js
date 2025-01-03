@@ -3,23 +3,42 @@ import "./Body.css"
 import Question from './Question'
 import axios from './axios'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import Cardsx from './Cardsx'
+import HeadersQuestion from './HeadersQuestion'
+import { useGlobalContext } from '../Store/GlobalContext'
 const Body = () => {
+  const {TokenUser} = useGlobalContext()
+ 
+  const Nav = useNavigate()
   const [question,setQuestion]  = useState([])
   const HandelApi = async()=>{
     try{
-      const response = await axios.get("/getQuestion")
-      console.log(response.data)
-      setQuestion(response.data)
-      
+      // const response = await axios.get("/getQuestion")
+      // // console.log(response.data)
+      // setQuestion(response.data.sort((a,b)=>b.view.length-a.view.length))
+   setQuestion(null)
     }
     catch(index){
-      console.log(`this eroor by ${index}`)
+      //  
     }
   }
-  useEffect(()=>{
+ 
+ 
+ 
+useEffect(()=>{
+  HandelApi()
+},[])
+
+
+useEffect(()=>{
+
+  const intervalId = setInterval(() => {
     HandelApi()
-   
-  },[])
+
+}, 4000);})
+
+
   return (
     <div className='Body__Container'>
 
@@ -28,7 +47,9 @@ const Body = () => {
           <div className='Body__Container__Inside__Setting'>
             
           <div className='icon-left-side'>
-  <button onClick={()=>localStorage.clear()} style={{cursor:"pointer"}}>Clear</button>
+  <button  style={{cursor:"pointer"}}>
+    <Link to={"/RankPage"}>TOP SCORE</Link>
+  </button>
 <div className='icon-self'>
 
    
@@ -67,7 +88,7 @@ const Body = () => {
 
 
           </div>
-
+  
           <div className='Body__Container__Inside__Question'>
 
             <div className='TopQuestiob__Container'>
@@ -91,8 +112,10 @@ const Body = () => {
             <br/>
             <div className='Question__Section'> 
               
-            {question?.map((b)=>   <Question document ={b}/> )}
-              
+            {/* {question?.map((b)=>   <Question document ={b}/> )} */}
+            {question?.map((b)=>   <Cardsx document ={b}/> )}
+           
+ 
               </div>
            
 
@@ -106,6 +129,7 @@ const Body = () => {
 
           
          </div>
+         
     </div>
   )
 }

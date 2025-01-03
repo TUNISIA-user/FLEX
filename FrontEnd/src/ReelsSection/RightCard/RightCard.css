@@ -1,0 +1,78 @@
+.RightCard{
+    width:378px;
+    height: 90%;
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    background-color:darksalmon;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+.CommentCard{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 7px;
+}
+.scrollCard{
+    background-color: red;
+    height:400px;
+    overflow-y: auto;
+    padding: 6px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.ReplyCommentdd{
+    width: 100%;
+    height: 50px;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media only screen and (max-width: 900px) {
+    .RightCard{
+        width:100%;
+        height: 90%;
+        border: 1px solid grey;
+        display: flex;
+        flex-direction: column;
+        background-color:darksalmon;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 10px;
+    
+    }
+    .CommentCard{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 7px;
+    }
+    .scrollCard{
+        background-color: red;
+        height:400px;
+        overflow-y: auto;
+        padding: 6px;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    
+    .ReplyCommentdd{
+        width: 100%;
+        height: 50px;
+        background-color: green;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    
+}

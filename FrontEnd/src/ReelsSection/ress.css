@@ -1,0 +1,74 @@
+.video-container {
+    position: relative;
+    width:67%;
+    padding-bottom: 100.25%; /* 16:9 Aspect Ratio (9 / 16 = 0.5625) */
+    height: 0;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+  
+  .responsive-video {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video fills the container while maintaining its aspect ratio */
+  }
+ .containerReels{
+    display: flex;
+    scroll-behavior: smooth;
+  } 
+  
+  .iconContainerReels{
+    color: white;
+    background-color: rgb(20, 193, 86);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+    gap: 5px;
+    cursor: pointer;
+    width:13%;
+    position: relative;
+    right: 47px;
+    
+   
+  }
+  .comm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+  }
+  
+
+  .rightPostioA{
+     position: absolute;
+     right: 0;
+  }
+
+
+
+
+  @media only screen and (max-width: 600px) {
+    .video-container {
+        position: relative;
+        width:67%;
+        padding-bottom: 115.25%; /* 16:9 Aspect Ratio (9 / 16 = 0.5625) */
+        height: 0;
+        overflow: hidden;
+        margin-left: auto;
+        margin-right: auto;
+        scroll-behavior: smooth;
+    
+      }
+      
+  }
+
+
+  

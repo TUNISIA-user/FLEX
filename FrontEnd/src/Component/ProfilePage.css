@@ -3,18 +3,19 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f7f7f7;
+ 
 }
 
 .profile-header {
   display: flex;
   align-items: center;
   gap: 40px;
-  background-color: #fff;
+  background-color: #0D1117;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-bottom: 20px;
+  color: white;
 }
 
 
@@ -78,7 +79,7 @@
 }
 
 .profile-content {
-  background-color: #fff;
+  background-color: #131212;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
@@ -140,10 +141,12 @@
 }
 .HandelImg{
     width: 100%;
+    display: flex;
+    justify-content: center;
     img{
-        width: 100%;
-        object-fit: cover;
-        height: 400px;
+       
+        border-radius: 30px;
+        height: auto;
     }
 }
 
@@ -160,12 +163,36 @@
  .profile-avatar{
   object-fit: cover;
  }
+
+
+ 
+
+ .clone-card{
+
+ 
+  scale:1.00999999;
+  border: 1.99px solid grey;
+} 
+
+ 
+.clone-card:hover{
+
+ 
+  scale:1.00999999;
+  border: 1.99px solid white;
+} 
+
+
+
 @media only screen and (max-width: 600px) {
+
+
+
     .profile-header {
         display: flex;
         align-items: center;
         gap: 100px;
-        background-color: #fff;
+         
         flex-direction: column;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -183,4 +210,53 @@
     }
    
 }
+  }
+
+
+  .container-card-profile {
+     
+
+    flex-wrap: wrap;
+    display: flex;
+     
+    gap: 10px;
+    .clone-card{
+      width: 30%;
+    }overflow-y: auto;
+    
+  }
+
+  @media only screen and (max-width: 600px) {
+
+
+    .clone-card-img-container img {
+      width: 100%; /* Full width by default */
+      height: 130px;
+      object-fit: cover;
+      border-radius: 14px;
+      
+    }
+    
+    .clone-card-img img {
+      border-radius: 100%;
+    }
+
+    
+
+
+    .container-card-profile {
+   
+  
+      flex-wrap: wrap;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      .clone-card{
+        width: 80%;
+        
+      }
+    }
+
   }

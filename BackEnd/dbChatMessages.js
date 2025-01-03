@@ -18,6 +18,7 @@ const ChatSession = new mongoose.Schema({
     idSession: { type: String },  // Optional field
     nameidSession: { type: String, required: true },  // Required field
     PrivateSession: [PrivateSessionAdmin],
+    stautsSession : {type:Boolean,default:false}
 }, { timestamps: true });
 
 export default mongoose.model('ChatSession', ChatSession);

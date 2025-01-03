@@ -1,7 +1,8 @@
 .HeadersQuestion {
    width: 100%;
    height: auto;
-   background-color: red;
+   
+   background-color: #12161b;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -10,7 +11,7 @@
 .HeadersQuestionInside {
    width: 98%;
    height: 96%;
-   background-color: rgb(110, 117, 110);
+   background-color: #12161b;
    display: flex;
    gap: 3px;
    justify-content: center;
@@ -18,13 +19,13 @@
 
 .left__Side {
    width: 18%;
-   background-color: rebeccapurple;
+   background-color: rgba(0, 0, 0, 0.39);
    height: 100vh;
 }
 
 .rightSide {
    width: 70%;
-   background-color: rebeccapurple;
+   background-color: #12161b;
    height: 100%;
 }
 
@@ -38,18 +39,22 @@
 
 .Level1 {
    width: 70%;
-   background-color: red;
+   background-color: #12161b;
+   color: white;
 }
 
 .Level2 button {
    padding: 10px;
    border-radius: 10px;
+   color: white;
+   background-color: red;
 }
 
 .AskedToday {
-   background-color: rgb(16, 100, 149);
+   background-color: #1e2329;
    display: flex;
    justify-content: center;
+   
 }
 
 .AskedToday span {
@@ -68,34 +73,38 @@
 .Vote__Question {
    width: 14%;
    height: auto;
-   background-color: rgb(220, 134, 13);
+   background-color: #1E2329;
 }
 
 .right__Vote__Question {
    width: 86%;
    height: auto;
-   background-color: orangered;
+   /* background-color: orangered; */
    overflow-x: auto;
+   color: white;
 }
 
 .Space__Vote h2 {
    font-size: medium;
+   padding: 10px;
+  
 }
 
 .PdfSectionUser {
    display: flex;
    justify-content:center;
    align-items: center;
-   background-color: rosybrown;
+   background-color: #12161b;
    overflow-y: auto;
 }
 
 
 .PdfSectionUser img {
- width: 70%;
- height: 500px;
-
+ width: 99.99%;
+ height: 800px;
+ margin-top: 4px;
  object-fit: contain;
+ border-radius: 50px;
 
 }
 
@@ -110,7 +119,7 @@
 }
 
 .Counter {
-   background-color: red;
+   background-color: rgb(242, 235, 235);
    width: 40px;
    height: 40px;
    display: flex;
@@ -143,7 +152,7 @@
  
 .icon-left-side{
    margin-top: 70px;
-   background-color: red;
+   background-color: white;
    display: flex;
    flex-direction: column;
    gap: 20px;
@@ -165,10 +174,22 @@
  }
 
 @media (max-width: 600px) {
+
+   .PdfSectionUser img {
+      width: 100%;
+      height: auto;
+      margin-top: 4px;
+      object-fit: contain;
+      border-radius: 10px;
+      
+     }
+
+
+     
    .HeadersQuestion {
       width: 100%;
       height: auto;
-      background-color: red;
+       
       display: flex;
       justify-content: center;
       align-items: center;
@@ -179,7 +200,7 @@
       width: 100%;
       max-width: 600px; /* Limit the width on small screens */
       height: auto;
-      background-color: green;
+       
       display: flex;
       flex-direction: column; /* Stack items vertically on small screens */
       gap: 10px;
@@ -187,13 +208,13 @@
    
    .left__Side {
       width: 100%; /* Full width for mobile */
-      background-color: rebeccapurple;
+      
       height: auto;
    }
    
    .rightSide {
       width: 100%; /* Full width for mobile */
-      background-color: rebeccapurple;
+      
       height: auto;
    }
    
@@ -207,7 +228,7 @@
    
    .Level1 {
       width: 100%; /* Full width for mobile */
-      background-color: red;
+      
    }
    
    .Level2 button {
@@ -240,14 +261,14 @@
    .Vote__Question {
       width: 100%; /* Full width for mobile */
       height: auto;
-      background-color: rgb(220, 134, 13);
+      
        display: none;
    }
    
    .right__Vote__Question {
       width: 100%; /* Full width for mobile */
       height: auto;
-      background-color: orangered;
+     
       overflow-x: auto;
     
    }
@@ -260,7 +281,7 @@
       display: flex;
       justify-content: center; /* Center content on mobile */
       align-items: center;
-      background-color: rosybrown;
+    
    }
    
    .ecran {

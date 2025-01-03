@@ -1,6 +1,6 @@
 import React, { useReducer, createContext, useContext, useEffect } from 'react';
 
-// Retrieve data from localStorage or use the default initial state
+// Retrieve data from localStorage or use the default initial state 
 const initialState = {
   user: null,
   TokenUser: JSON.parse(localStorage.getItem('TokenUser')) || [] ,
@@ -8,12 +8,92 @@ const initialState = {
   togle :    JSON.parse(localStorage.getItem('togle'))    ||    "false",
   BasketMassages : JSON.parse(localStorage.getItem('BasketMessage')) || [],
   // userTage : JSON.parse(localStorage.getItem('userTage')) || '',
-  UserProfile  : JSON.parse(localStorage.getItem("userProfile")) || []
+  UserProfile  : JSON.parse(localStorage.getItem("userProfile")) || [],
+  SavePost : JSON.parse(localStorage.getItem("SavePost")) || [],
+  currentUser : JSON.parse(localStorage.getItem("currentUser")) || null,
+  currentPictuer : JSON.parse(localStorage.getItem("currentPictuer")) || null,
+  Ram : [],
+  userProfileSe:JSON.parse(localStorage.getItem("userProfileSe")) || null,
+  SiriVoice : JSON.parse(localStorage.getItem("OpenSiri")) || false,
+  StartRecodingValue :  JSON.parse(localStorage.getItem("RecordVoice")) || false
+
 };
 
 // Reducer function
 const reducer = (state, action) => {
+ 
+       
+      
   switch (action.type) {
+
+    case "STARTVOCEMESSAGERECORDING3":
+      const VoiceReconigze = action.voicePaylod 
+      localStorage.setItem("RecordVoice",JSON.stringify(VoiceReconigze))
+
+      return{
+        ...state,
+        StartRecodingValue  : VoiceReconigze,
+      }
+
+    case "SET_SIRI_VOICE":
+      const setSiri = action.paySiri
+      localStorage.setItem("OpenSiri",JSON.stringify(setSiri))
+      return{
+      ...state,
+      SiriVoice : setSiri,
+      }
+
+    case "SeeMyProfile":
+      const userProfileSedata  = [action.paylod]
+      localStorage.setItem("userProfileSe",JSON.stringify(userProfileSedata))
+      return{
+        ...state,
+        userProfileSe : userProfileSedata
+      }
+
+
+
+    case "Ram":
+      const Ram2  = [action.payloadData]
+
+    return{
+      ...state,
+      Ram:Ram2
+    }
+
+    case "CURRENT__PIC":
+      const currentPic  = [action.paylod]
+      localStorage.setItem("currentPictuer",JSON.stringify(currentPic))
+      return{
+        ...state,
+        currentPictuer : currentPic
+      }
+
+
+
+    case "CURRENT__USER":
+      const current  = [action.paylod]
+      localStorage.setItem("currentUser",JSON.stringify(current))
+      return{
+        ...state,
+        currentUser : current
+      }
+
+
+
+
+
+
+
+
+    case  "SAVE__POST":
+      const SavePostx = [...state.SavePost,action.paylodSave]
+      localStorage.setItem("SavePost",JSON.stringify(SavePostx))
+    return{
+      ...state,
+      SavePost : SavePostx
+
+    }
   
     case "SET__PROFILE__USER":
       const SetData = [action.payload]
@@ -88,10 +168,19 @@ export const ContextProvider = ({ children }) => {
     //console.log(state);
   }, [state.TokenUser,state.AddQuestion]);
 
+
+
   return (
     <GlobalContext.Provider value={{ state, dispatch, user: state.user, TokenUser: state.TokenUser,AddQuestion:state.AddQuestion,togle:state.togle,BasketMassages:state.BasketMassages
-      ,userTage:state.userTage,UserProfile:state.UserProfile
+      ,userTage:state.userTage,UserProfile:state.UserProfile,SavePost : state.SavePost,
+      currentUser : state.currentUser ,currentPictuer :state.currentPictuer,
+      Ram:state.Ram,
+      userProfileSe:state.userProfileSe,
+      SiriVoice : state.SiriVoice,
+      StartRecodingValue : state.StartRecodingValue
+      
      }}>
+      
       {children}
     </GlobalContext.Provider>
   );

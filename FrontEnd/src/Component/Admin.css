@@ -1,96 +1,187 @@
-.Admin{
+/* General styles */
+
+ 
+.Admin {
     width: 100%;
     height: 100vh;
-    background-color: rgb(55, 54, 54);
+    background-color: #02050b;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.Container__admin{
+
+.Container__admin {
     width: 90%;
     height: 90%;
     background-color: white;
     display: flex;
     flex-direction: row;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-.right{
-    width: 20%;
-    height: 100%;
-    background-color: rgb(202, 51, 51);
-    overflow-x: auto;
 
+.right {
+    width: 25%;
+    height: 100%;
+    background-color: #1C1F26;
+    overflow-y: auto;
+    padding: 10px;
+    box-sizing: border-box;
 }
-.left{
-    width: 80%;
-    height: 90%;
-    overflow: auto;
-    background-color: green;
+
+.left {
+    width: 75%;
+    height: 100%;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.ContainerChat{
+
+.ContainerChat {
     width: 100%;
     padding: 10px;
     background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.ContainerName{
-width: 40px;
-height: 40px;
-border-radius: 100%;
-color: black;
-background-color: white;
-display: flex;
-justify-content: center;
-align-items: center;
-font-size: large;
-cursor: pointer;
+.ContainerName {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    color: black;
+    cursor: pointer;
 }
 
-.sendiy{
+.MessageaAdminRouetes {
+    flex-grow: 1;
+    padding: 10px;
+    background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-y: auto;
+}
+
+.message,
+.righINdex {
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    
+    width: auto;
+    max-width: 30%;
+}
+
+.message {
+    background-color: white;
+}
+
+.righINdex {
+    background-color: rgb(0, 111, 231);
+    margin-left: auto;
+    display: flex;
+   
+    
+}
+
+.sendiy {
     display: flex;
     align-items: center;
-    width:70%;
-    background-color: rebeccapurple;
-    position: absolute;
-    bottom: 0;
-    input{
+ 
+    padding: 10px;
+}
+
+.sendiy input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.sendiy button {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #1C1F26;
+    color: white;
+    cursor: pointer;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .Container__admin {
+        flex-direction: row-reverse;
+        height: auto;
         width: 100%;
-        padding: 10px;
     }
-    button{
-        padding: 10px;
-        border-radius: 10px;
 
+    .Admin {
+        width: 100%;
+        height: auto;
+      
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
     
+
+    .right {
+        width: 20%;
+        height: auto;
+        order: 2;
+    }
+
+    .left {
+        width: 80%;
+        height: auto;
+        order: 1;
+    }
+
+    .message, .righINdex {
+        max-width: 100%;
+    }
+
+    .sendiy {
+        flex-direction: column;
+    }
+
+    .sendiy input {
+        margin-bottom: 10px;
+    }
+
+
+
+
+
+
 }
 
-.message{
-    background-color: white;
-    border-radius: 10px;
-    width: 300px;
-    padding: 3px;
-    margin: 10px;
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+@media (max-width: 480px) {
+    .ContainerChat {
+        padding: 5px;
+    }
 
+    .sendiy {
+        padding: 5px;
+    }
+
+    .sendiy input,
+    .sendiy button {
+        padding: 8px;
+        font-size: 14px;
+    }
 }
-
-.righINdex{
-    background-color: rgb(85, 89, 227);
-    border-radius: 10px;
-    width: 400px;
-    padding: 3px;
-    margin-top: 10px;
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    
-}
-.MessageaAdminRouetes{
-  background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
-
-}
-

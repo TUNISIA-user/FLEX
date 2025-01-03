@@ -1,0 +1,32 @@
+.app-right-side{
+    width: 15%;
+    height: 100%;
+      color: white;
+    background-color: #0f0f0f;
+    
+}
+.sideIcon{
+    width: 70%;
+    background-color: red;
+    margin: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    color: white;
+    font-size: 20px;
+
+}
+ 
+
+.vous{
+    display: flex;
+    align-items: center;
+    gap:3px;
+    
+    margin-top: 10px;
+}
+.vous h2{
+    font-weight: bold;
+    font-size:25px;
+}

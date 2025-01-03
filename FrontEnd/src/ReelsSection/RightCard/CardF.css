@@ -1,0 +1,19 @@
+.CardComment{
+    display: flex;
+    margin-left: 4px;
+}
+.rihgtSectionf{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 7px;
+    color: white;
+    font-weight: bold;
+
+}
+.coantinerreply{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 7px;
+}

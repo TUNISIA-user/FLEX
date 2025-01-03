@@ -1,4 +1,4 @@
-   
+            
 import React, { useEffect, useRef } from 'react';
   
 // Example Avatar component
@@ -74,5 +74,44 @@ const handleFileChange = async (e) => {
     setLoading(false)
   }
 };
+
+
+
+// fix type script eroor for handel a lot of time from the backed by do recontion 5 time 
+
+import React, { useEffect } from "react";
+import { io } from "socket.io-client";
+
+const App: React.FC = () => {
+  useEffect(() => {
+    // Establish socket connection with automatic reconnection enabled
+    const socket = io('http://localhost:9000', {
+      reconnectionAttempts: 5, // Try reconnecting 5 times
+      reconnectionDelay: 1000, // Wait 1 second before each reconnection attempt
+    });
+
+    // Log when connected
+    socket.on('connect', () => {
+      console.log(`Connected with id: ${socket.id}`);
+    });
+
+    // Clean up socket connection when the component unmounts
+    return () => {
+      socket.disconnect();
+      console.log('Disconnected from socket');
+    };
+  }, []);
+
+  return (
+    <>
+      <p>Welcome</p>
+    </>
+  );
+};
+
+export default App;
+
+
+
 
 

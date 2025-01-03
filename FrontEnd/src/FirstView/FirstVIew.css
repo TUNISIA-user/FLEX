@@ -1,0 +1,184 @@
+.container__first_view{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ASKENET{
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.insdide__cotnainer{
+    width: 80%;
+    height: 500px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px   ;
+ 
+}
+ 
+
+.firstview__button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+ 
+
+}
+
+.button1{
+border: none;
+padding: 14px;
+width: 280px;
+border-radius: 5px; 
+background-color: #0168D5;
+color: aliceblue;
+font-size: 14px;
+font-weight: 630;    cursor: pointer;
+}
+
+.button2{
+    border: none;
+    padding: 14px;
+    width: 280px;
+    border-radius: 5px; 
+    background-color:#F1F3F5;
+    color: grey;
+    font-size: 14px;    cursor: pointer;
+    font-weight: 630;
+    }
+
+    
+    /* .firstview__titile{
+       
+
+    } */
+    .whatsapp{
+        color:gold;
+        margin-left: 20px
+    }
+
+  
+ .button1:hover{
+    background-color: #0c57a7;
+    
+ }  
+ .button2:hover{
+    background-color:#e2dede;
+ }
+
+
+ .users__container{
+   
+    width: 100%;
+    height: 140px;
+    position: absolute;
+   
+    bottom:  0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+ }
+
+ .users__container{
+    text-align: center;
+
+ }
+
+ 
+.image__container__videos__users {
+
+    img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      border-radius: 100%;
+      
+      /* Adding rotation animation */
+      animation: rotate-image 3s infinite linear; /* Rotate continuously */
+    }
+  }
+  
+  .userInsideContainer {
+  
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Keyframes for the rotation animation */
+  @keyframes rotate-image {
+    from {
+      transform: rotate(0deg); /* Starting point */
+    }
+    to {
+      transform: rotate(360deg); /* Complete one full rotation */
+    }
+  }
+  
+
+
+
+
+
+  .rotate--img--home{
+    animation: rotateFlex 4s infinite linear;
+  }
+
+
+
+    /* Keyframes for the rotation animation */
+    @keyframes rotateFlex {
+      from {
+        transform: rotate(0deg); /* Starting point */
+      }
+      to {
+        transform: rotate(360deg); /* Complete one full rotation */
+      }
+    }
+
+
+
+    .firstview__img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%; /* Make it a circle */
+      background: conic-gradient(
+        #ff0000, 
+        #ffff00, 
+        #00ff00, 
+        #00ffff, 
+        #0000ff, 
+        #ff00ff, 
+        #ff0000
+      ); /* Color gradient in a circle */
+      animation: rotateColors 3s infinite linear;
+    }
+    
+    /* Keyframes for circular color rotation */
+    @keyframes rotateColors {
+      from {
+        transform: rotate(360deg);
+      }
+      to {
+        transform: rotate(0deg); /* Full rotation */
+      }
+    }
+
+
+    
+
+    
+    
+    

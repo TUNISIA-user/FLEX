@@ -1,0 +1,11 @@
+{
+    "login": "create your account ",
+    "description": "This description appears in English.",
+    "username" : "username",
+    "password":"password",
+    "button": {
+      "submit": "Submit",
+      "cancel": "Cancel"
+    }
+  }
+  
