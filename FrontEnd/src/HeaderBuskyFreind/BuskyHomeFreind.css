@@ -22,7 +22,8 @@
 }
 .busky--home--container{
     width: 100%;
-    background-color:var(--background-color) ;
+ background-color: #161e27;  
+ 
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -39,7 +40,7 @@ background-color: var(--background-color);
   
    display: flex;
    justify-content: flex-end;
-
+  
 }
 .busky--postsx{
     width: 60%;
@@ -54,6 +55,7 @@ background-color: var(--background-color);
     height: 100%;
     background-color: var(--background-color);
     background-color: #161E27;
+    display: none;
 }  
 
 /* .busky--navbar{
@@ -116,16 +118,18 @@ background-color: var(--background-color);
 
 }
 .busky--navabar--img img{
-    width: 60px;
-    height: 60px;
+    width: 51px;
+    height: 49px;
     border-radius: 100%;
     margin-top: 23px;
 }
+ 
 .busky--container--section {
    
     img{
-        width: 25px;
+        width: 33px;
         object-fit: contain;
+        
     }
     display: flex;
     margin-top: 20px;
@@ -282,7 +286,7 @@ background-color: var(--background-color);
 
     .busky--navabar--img{
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
     }
    
@@ -290,6 +294,20 @@ background-color: var(--background-color);
 
    
   @media screen and (max-width: 930px){
+
+    .busky--navbarx{
+        width: 20%;
+        height: 100%;
+    background-color: var(--background-color);
+       
+      
+       display: flex;
+       justify-content: flex-end;
+       display: none;
+      
+    }
+
+    
     .busky--navar-seeting {
         width: 60%;
         background-color: rgb(14, 13, 13);
@@ -329,10 +347,15 @@ background-color: var(--background-color);
     }
 
     .busky--navbar{
-        width: 30%;
+        /* width: 30%;
         height: 100%;
         background-color: var(--background-color);
-       
+        */        width: 100%;
+        height: 18%;
+        background-color: var(--background-color);
+        position: absolute;
+        z-index: 3;
+        bottom: 0;
     
     }
     .busky--container--section-new-post{
@@ -410,20 +433,23 @@ background-color: var(--background-color);
 
 
 @media screen and (max-width:630px){
+ 
     .busky--navar-seeting {
         width: 100%;
-        height: 100vh;
-        background-color: #161e27;
+        height: 13vh;
+        background-color: #f5356e;
         color: whitesmoke;
         font-weight: bold;
         font-size: large;
-        
-        
+        display: flex;
+        justify-content: space-around;
+        position: absolute;
+        bottom: 25px;
     }
     .screenSizex{
         cursor: pointer;
         margin-top: 3px;
-        background-color: rgb(17, 12, 12);
+        
         padding: 3px;
         img{
             width: 24px;
@@ -433,7 +459,8 @@ background-color: var(--background-color);
     .busky--postsx{
         width: 100%;
         height: 100%;
-        background-color: var(--background-color);
+      background-color: var(--background-color);  
+         
         scroll-behavior: smooth;
         border-left: 0.44px solid grey;
         border-right: 0.44px solid grey;
@@ -446,14 +473,37 @@ background-color: var(--background-color);
     
     }
     .openside{
-        display: flex;
-        width: 30%;
+    
+            display: flex;
+            width: 100%;
+            height: 61px;
+         
+            z-index: 3;
+            position: absolute;
+            bottom: 0;
+           
     }
 
     .busky--container--section-new-post{
-        background-color: rebeccapurple;
-        width: 100%;
-         
+        /* background-color: #1a1f26;
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+         cursor: pointer;
+         margin-left: auto; */
+         background-color: transparent;
+         width: 15%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         cursor: pointer;
+         margin-left: auto;
+         /* display: none; */
+         position: absolute;
+         /* left: 0; */
+         right: 0;
+        top: -79px;
     }
     .busky--container--section-new-post .up {
         display: flex;
@@ -509,7 +559,8 @@ background-color: var(--background-color);
 
 
 .card-wrapp--acount{
-    background-color: rgb(19, 18, 18);
+    background-color: #12161b;
+    border-radius:20px;
     display: flex;
     padding: 10px;
     gap: 10px;
@@ -547,10 +598,11 @@ background-color: var(--background-color);
     gap: 10px;
     overflow-x: auto;
      scroll-behavior: smooth;
-
+     -ms-overflow-style: none;  /* IE and Edge */
+     scrollbar-width: none;
 }
 .headersMessages{
-    background-color: rgb(18, 18, 35);
+     
     width: 100%;
     padding: 16px;
     display: flex;

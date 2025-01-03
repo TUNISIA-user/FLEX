@@ -61,7 +61,7 @@ font-weight: 630;    cursor: pointer;
 
     } */
     .whatsapp{
-        color: firebrick;
+        color:gold;
         margin-left: 20px
     }
 
@@ -127,3 +127,58 @@ font-weight: 630;    cursor: pointer;
     }
   }
   
+
+
+
+
+
+  .rotate--img--home{
+    animation: rotateFlex 4s infinite linear;
+  }
+
+
+
+    /* Keyframes for the rotation animation */
+    @keyframes rotateFlex {
+      from {
+        transform: rotate(0deg); /* Starting point */
+      }
+      to {
+        transform: rotate(360deg); /* Complete one full rotation */
+      }
+    }
+
+
+
+    .firstview__img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%; /* Make it a circle */
+      background: conic-gradient(
+        #ff0000, 
+        #ffff00, 
+        #00ff00, 
+        #00ffff, 
+        #0000ff, 
+        #ff00ff, 
+        #ff0000
+      ); /* Color gradient in a circle */
+      animation: rotateColors 3s infinite linear;
+    }
+    
+    /* Keyframes for circular color rotation */
+    @keyframes rotateColors {
+      from {
+        transform: rotate(360deg);
+      }
+      to {
+        transform: rotate(0deg); /* Full rotation */
+      }
+    }
+
+
+    
+
+    
+    
+    

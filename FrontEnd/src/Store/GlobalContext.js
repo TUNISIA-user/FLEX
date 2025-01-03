@@ -1,6 +1,6 @@
 import React, { useReducer, createContext, useContext, useEffect } from 'react';
 
-// Retrieve data from localStorage or use the default initial state
+// Retrieve data from localStorage or use the default initial state 
 const initialState = {
   user: null,
   TokenUser: JSON.parse(localStorage.getItem('TokenUser')) || [] ,
@@ -14,16 +14,34 @@ const initialState = {
   currentPictuer : JSON.parse(localStorage.getItem("currentPictuer")) || null,
   Ram : [],
   userProfileSe:JSON.parse(localStorage.getItem("userProfileSe")) || null,
- 
+  SiriVoice : JSON.parse(localStorage.getItem("OpenSiri")) || false,
+  StartRecodingValue :  JSON.parse(localStorage.getItem("RecordVoice")) || false
 
 };
 
 // Reducer function
 const reducer = (state, action) => {
-
+ 
+       
+      
   switch (action.type) {
 
-    
+    case "STARTVOCEMESSAGERECORDING3":
+      const VoiceReconigze = action.voicePaylod 
+      localStorage.setItem("RecordVoice",JSON.stringify(VoiceReconigze))
+
+      return{
+        ...state,
+        StartRecodingValue  : VoiceReconigze,
+      }
+
+    case "SET_SIRI_VOICE":
+      const setSiri = action.paySiri
+      localStorage.setItem("OpenSiri",JSON.stringify(setSiri))
+      return{
+      ...state,
+      SiriVoice : setSiri,
+      }
 
     case "SeeMyProfile":
       const userProfileSedata  = [action.paylod]
@@ -158,6 +176,8 @@ export const ContextProvider = ({ children }) => {
       currentUser : state.currentUser ,currentPictuer :state.currentPictuer,
       Ram:state.Ram,
       userProfileSe:state.userProfileSe,
+      SiriVoice : state.SiriVoice,
+      StartRecodingValue : state.StartRecodingValue
       
      }}>
       

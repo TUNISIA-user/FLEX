@@ -2,6 +2,8 @@
 .allCaontinserSearchProfileAbout{
     display: flex;
     flex-direction: row;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none; 
 }
 
 .search{
@@ -15,6 +17,7 @@
     height: 100vh;
    
     background-color: #161e27;
+    
 }
 
 .about{
@@ -72,3 +75,204 @@ cursor: pointer;
     bottom: 30px;
     left: 27px;
  }
+
+ .postShare{
+   
+    width: 100%;
+    height: auto;
+    margin-top: 2px;
+    padding: 3px;
+    border-bottom: 1px solid grey;
+ }
+
+ .sharePostsg{
+
+    background-color: #161E27;
+    height: 100%;
+     
+   
+ }
+
+ .imgDataPost img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 100px;
+ }
+
+ .dataSharePost{
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+ }
+ 
+ .dataImgPost{
+    /* background-color: green; */
+    width: 100%;
+    height:auto;
+ 
+ }
+
+ .dataImgPost img{
+ width: auto;
+    height: 98%;
+    object-fit:contain;
+    border-radius:20px;
+ }
+
+   .reactDataImgPost{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    
+ }
+ 
+
+  
+ 
+ .ProfileContainerAppClone{
+   width: 100%;
+    
+   background-color: rebeccapurple;
+ }
+
+
+ @media screen and (max-width: 900px) {
+   
+.allCaontinserSearchProfileAbout{
+   display: flex;
+   flex-direction: row;
+   -ms-overflow-style: none;  /* IE and Edge */
+   scrollbar-width: none; 
+}
+
+.search{
+   width: 30%;
+   height: 100vh;
+   display: none;
+   
+}
+.Profilenb{
+   width: 100%;
+   height: 100vh;
+  
+   background-color: #161e27;
+   
+}
+
+.about{
+   width: 30%;
+   height: 100vh;
+   background-color: red;
+   display: none;
+
+}
+
+.BackGroundPoctuer{
+   width: 100%;
+   height: 20%;
+   img{
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+   }
+}
+
+.UsERDinfo{
+   display: flex;
+   justify-content: space-between;
+}
+.imgUserDinfo{
+display: flex;
+background-color: #161e27;
+flex-direction: column;
+cursor: pointer;
+}
+
+.EdditProfileImg{
+   cursor: pointer;
+   color: white;
+   font-weight: bold;
+   display: flex;
+   align-items: center;
+   width: 140px;
+   background-color: #161e27;
+   justify-content: space-between;
+   margin-right: 10px;
+   span{
+       
+       height: 27px;
+       background-color: #161e27;
+       color: white;
+       font-weight: bold;
+       padding: 6%;
+       border-radius: 10px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+   }
+}
+.slm{
+   position: relative;
+   bottom: 30px;
+   left: 27px;
+}
+
+.postShare{
+   
+   width: 100%;
+   height: auto;
+   margin-top: 2px;
+   padding: 3px;
+}
+
+.sharePostsg{
+
+   
+   height: auto;
+    
+  
+}
+
+.imgDataPost img {
+   width: 60px;
+   height: 60px;
+   object-fit: cover;
+   border-radius: 100px;
+}
+
+.dataSharePost{
+   display: flex;
+   gap: 10px;
+   padding: 5px;
+}
+
+.dataImgPost{
+   
+   width: 100%;
+   height:auto;
+
+}
+
+.dataImgPost img{
+   width: auto;
+   height: auto;
+   object-fit: contain;
+   border-radius: 20px;
+}
+
+.reactDataImgPost{
+   margin-top: 10px;
+   display: flex;
+   justify-content: space-around;
+}
+.textDtaSharePost{
+   color: white;
+}
+
+ }
+
+
+
+ 

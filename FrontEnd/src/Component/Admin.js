@@ -10,7 +10,7 @@ const Admin = () => {
     const [messages, setMessages] = useState([]);
     const { dispatch, BasketMassages, userTage, TokenUser } = useGlobalContext();
     const [document, setDocument] = useState('');
-   
+    // intial comment for compilr 
     const FetchDataFromArray = async () => {
         try {
             const response = await axios.get('/getChatPostForAdmin');

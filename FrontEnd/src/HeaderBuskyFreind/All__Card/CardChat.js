@@ -50,7 +50,7 @@ catch(eroor){
 
     <div className='CardChat--1' key={index}>
         <div className='CardChat--image'>
-            <img src={`${process.env.REACT_APP_API_KEY}/${item.imgUser}`} alt=''/>
+            <img src={`${item.imgUser}`} alt=''/>
         </div>
         <div className='CardChat--text'>{item.username}</div>
         <div className='CardChatButton'>

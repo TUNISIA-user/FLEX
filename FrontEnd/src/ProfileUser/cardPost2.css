@@ -1,0 +1,61 @@
+.repost--user{
+    width: 100%;
+    height: auto;
+    margin-top: 2px;
+    padding: 3px;
+    
+}
+
+.repost-user-identify{
+
+}
+.repost--user--sectionLine{
+    display: flex;
+    flex-direction: row;
+}
+.lineWeight{
+    width:7%;
+    background-color: red;
+    position: relative;
+    bottom: 40px;
+    height: 410px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgdkfdkfkfd{
+    width: 90%;
+    background-color: green;
+    position: relative;
+    bottom: 24px;
+    height: 499px;
+}
+.iloveLine{
+    width: 4%;
+    height: 100%;
+    background-color: blue;
+    
+
+}
+.avtarLine{
+    margin-top: 3px;
+}
+.dataUser{
+    background-color: red;
+    width: 99%;
+    height: auto;
+    margin-left: auto;
+    padding:2px;
+}
+.imgIndsidedivImg{
+    width: 100%;
+    height: 300px;
+    background-color: blue;
+}
+.imgIndsidedivImg img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}

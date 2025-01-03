@@ -9,7 +9,7 @@ import { useGlobalContext } from '../Store/GlobalContext'
 import { useCallback } from 'react';
 import _ from 'lodash'; 
 import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 const BuskyHomeFreind = () => {
   const [open,setopen] = useState(false)
   const [users,setUsers] = useState([])
@@ -46,7 +46,7 @@ const BuskyHomeFreind = () => {
 
     const intervalId = setInterval(() => {
       UsersApi()
-  },700);
+  },2000);
 
 
   return () => clearInterval(intervalId);
@@ -105,6 +105,11 @@ const BuskyHomeFreind = () => {
       //setlodaing3(false)
     }
   }
+
+useEffect(()=>{
+  AcessAllMessagesTo_user() // this solution when page reneder give me all data in section messages
+},[])
+
  const HandelMyChatRoomFromTheServer = (item)=>{
   
  dispatch({
@@ -226,31 +231,22 @@ const TestIds  =(id,arr)=>{
 
             <div className={`busky--navbarx ${open?'openside':"closeside"}`}>   
             <div className={`busky--navar-seeting ${open?"openx":"closex"}`}>
-           <div className='busky--navabar--img'><img src='https://cdn.bsky.app/img/avatar_thumbnail/plain/did:plc:sussmqg7qh7ja7ma46f3x2aj/bafkreido5og6sxgkdr3cf2uzfuuujjgqaw3ghhwiugai43hltq4jvlee6m@jpeg' alt=''/></div>
+           <div className='busky--navabar--img'><img src={`${TokenUser.imgUser}`} alt=''/></div>
          
            <div className='busky--container--section'>
-            <img src='../imgHome/accueil.png' alt=''/>
+           
+            <Link to={"/bluskG"}>  <img src='../imgHome/accueil.png' alt=''/></Link>
             <span>Home</span>
            </div>
            
 
-           <div className='busky--container--section'>
-            <img src='../imgHome/chercher.png' alt=''/>
-            <span>Search</span>
-           </div>
+           
            
 
-           <div className='busky--container--section'>
-            <img src='../imgHome/notification.png' alt=''/>
-            <span>notification</span>
-           </div>
+           
            
 
-           <div className='busky--container--section'>
-            <img src='../imgHome/chat.png' alt=''/>
-            <span>Chat</span>
-           </div>
-           
+            
 
            <div className='busky--container--section'>
             <img src='../imgHome/symbole-hashtag.png' alt=''/>
@@ -277,13 +273,7 @@ const TestIds  =(id,arr)=>{
             <span>Setting</span>
            </div>
            
-           <div className='busky--container--section-new-post'>
-           <div className='up'>
-           <img src='../imgHome/editer.png' alt=''/>
-           <span>New Post</span>
-
-           </div>
-           </div>
+        
            
 
 
@@ -304,7 +294,7 @@ const TestIds  =(id,arr)=>{
             )
             }
             </div>
-             <Tabs size='md'defaultIndex={0} >
+             <Tabs size='md'defaultIndex={1} >
                 <TabList>
                     <Tab><h1 style={{color:"white",fontSize:"19px",fontWeight:"bold"}}>Users</h1></Tab>
                     <Tab onClick={()=>AcessAllMessagesTo_user()} ><h1 style={{color:"white",fontSize:"19px",fontWeight:"bold"}}>my Chat</h1></Tab>
@@ -346,34 +336,38 @@ const TestIds  =(id,arr)=>{
                    
                     <div className='headersMessages'>  
                        <h1>Messages</h1>
-                       <Button colorScheme='blue' variant='solid'>
+                       {/* <Button colorScheme='blue' variant='solid'>
                           Button
-                     </Button>
+                     </Button> */}
                     </div>
                      <div className='wrapUsersAccount'>
                      
-                       {lodaing3 ?           <>  
-                     <Box padding='2' boxShadow='md' d="flex" bg='#161E2' style={{width:"400px"}}>
-                     <SkeletonCircle size='70' />
-                     <SkeletonText mt='9' noOfLines={4} spacing='5' skeletonHeight='4' />
-                     </Box>
-                     <Box padding='2' boxShadow='md' d="flex" bg='#161E2' style={{width:"400px"}}>
-                     <SkeletonCircle size='70' />
-                     <SkeletonText mt='9' noOfLines={4} spacing='5' skeletonHeight='4' />
-                     </Box>       
+                       { user3.length==0 ? <p>no freind now </p>  
+                       : lodaing3 ?       <>  
+                       <Box padding='2' boxShadow='md' d="flex" bg='#161E2' style={{width:"400px"}}>
+                       <SkeletonCircle size='70' />
+                       <SkeletonText mt='9' noOfLines={4} spacing='5' skeletonHeight='4' />
+                       </Box>
+                       <Box padding='2' boxShadow='md' d="flex" bg='#161E2' style={{width:"400px"}}>
+                       <SkeletonCircle size='70' />
+                       <SkeletonText mt='9' noOfLines={4} spacing='5' skeletonHeight='4' />
+                       </Box>      
                                       
                                       
                                                         
                      </>:<>
                        
 
-            { user3.length>0 ?      user3?.map((item,index)=>      <div className='card-wrapp--acount' style={{cursor:"pointer"}} onClick={()=>HandelMyChatRoomFromTheServer(item)}  key={index}>
+            { user3.length>0 ?      user3
+             .slice() // Creates a shallow copy to avoid mutating the original array
+             .reverse()
+            .map((item,index)=>      <div className='card-wrapp--acount' style={{cursor:"pointer"}} onClick={()=>HandelMyChatRoomFromTheServer(item)}  key={index}>
 
-<Avatar name='Ghaith Nahdi'  size='lg' src={`${process.env.REACT_APP_API_KEY}/${item.imgUser}`} />
+<Avatar name='Ghaith Nahdi'  size='lg' src={`${item.imgUser}`} />
 <div className='left--card-account'>
-<h2>{item.username}. 6 h</h2>
-<p>@{item.email}</p>
-<p className='messageme'>you : slm ya bro </p>
+<h2 style={{display:"flex",width:"200px"}}>{item.username} | {item.ScoreRank} ⭐</h2>
+{/* <p>@{item.email}</p> */}
+<p className='messageme'>{item.LastSeen}</p>
 </div>
 </div>
 )                 : <p>No Freind right now</p>             }
@@ -423,7 +417,7 @@ const TestIds  =(id,arr)=>{
            </Box>: <>
           { user2?.map((item)=>
             <div className='cards--busky-freind'>
-            <Avatar name='Dan Abrahmov' src={`${process.env.REACT_APP_API_KEY}/${item.imgUser}`} />
+            <Avatar name='Dan Abrahmov' src={`${item.imgUser}`} />
           <h2 style={{color:item.email==="devlopper@gmaill.s" || item.email=="nahdigyth@gmail.com" ? "gold":"white"} }>{item.email}</h2>
             <Button colorScheme='blue' className='add' >ADD</Button>
             </div>)}

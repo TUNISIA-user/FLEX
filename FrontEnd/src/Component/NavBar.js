@@ -29,7 +29,7 @@ const NavBar = () => {
     <p style={{color:"white",fontWeight:"bold",fontSize:"17px"}}>Welcome</p> <h3 style={{color:TokenUser?.username==="admin" ||TokenUser?.username==="devlopper" ? "gold":"white"}}> {TokenUser.username} </h3>
       <Avatar
       size='md'
-      src={ TokenUser?.imgUser? `${process.env.REACT_APP_API_KEY}/${TokenUser.imgUser}`   :'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o='}
+      src={ TokenUser?.imgUser? `${TokenUser.imgUser}`   :'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o='}
       onClick={()=>setOpen((prev)=>!prev)}
       
     />

@@ -16,7 +16,8 @@
      
 }
 .busky--app-card-post{
-   background-color: #161E27;
+    background-color: #161E27;  
+  
     width: 99%;
     margin: 2px;
     border-bottom: 2px solid grey;
@@ -130,12 +131,17 @@
 }
 video{
    border-radius: 14px;
-   width: 67%;
+   width: 37%;
 }
 
 
 
  @media screen and (max-width:630px){
+   .thisgonnahelpme{
+ 
+      width: 288px;
+      
+   }
 
    .busky-app-avatar{
       display: flex;
@@ -146,7 +152,9 @@ video{
        
   }
   .busky--app-card-post{
-      background-color: #161E27;
+      background-color: #161E27;  
+      
+
       width: 99%;
       margin: 2px;
       border-bottom: 2px solid grey;
@@ -208,6 +216,7 @@ video{
       justify-content: center;
       margin-left: 9px;
       padding: 5px;
+       
    }
    
    .busky-app-info-img{
@@ -219,7 +228,7 @@ video{
      
    }
    .busky-app-info-img img{
-      width: 100%;
+      width: 75%;
     
       height: auto;
      
@@ -258,5 +267,4 @@ video{
  }
 
  
- 
-
+ /* // fix reponsive thing in this interner */

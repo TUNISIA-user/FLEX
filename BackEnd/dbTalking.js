@@ -13,6 +13,7 @@ const chatSchema = new mongoose.Schema({
     users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     Block : {type:Boolean,default:false},
     DataBlocker : {type:[DataBlocker],default:[]},
+    tehmeTemplte :{type:String,default:"https://w0.peakpx.com/wallpaper/457/910/HD-wallpaper-whatsapp-black-patterns-dark-thumbnail.jpg"},
     messages: [
         {
             senderId:  { type: mongoose.Schema.Types.ObjectId, ref: 'User' },  
@@ -20,7 +21,8 @@ const chatSchema = new mongoose.Schema({
             timestamp: { type: Date, default: Date.now }   ,
             imgUser : {type:String},
             vue: { type: String, default: "notSeen" },
-            imgProfile : {type:String}
+            imgProfile : {type:String},
+            voiceMessage : {type:String,default:""}
         }
     ]
 });

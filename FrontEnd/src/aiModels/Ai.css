@@ -1,0 +1,41 @@
+.AiVoice{
+    background-color: #212121;
+    width: 40%;
+    height: 400px;
+  
+    color: white;
+    padding: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    position: absolute;
+    left: 30%;
+    z-index: 3;
+    margin-top: 77px;
+
+}
+
+.containerworld{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+
+}
+
+
+@media only screen and (max-width: 900px) {
+    .AiVoice{
+        background-color: #212121;
+        width:100%;
+        height: 400px;
+        margin-top: 77px;
+        color: white;
+        padding: 10px;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 24px;
+        position: absolute;
+        left: 0%;
+        z-index: 3;
+    
+    }
+  }

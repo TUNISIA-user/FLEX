@@ -63,3 +63,4 @@ const postBluskyg = new mongoose.Schema({
 }, { timestamps: true });
 
 export default mongoose.model('postBluskyg', postBluskyg);
+                               

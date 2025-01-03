@@ -25,10 +25,21 @@ import ProfileBuskt from './ProfileUser/ProfileBuskt.js';
 import Rank from './RankUsers/Rank.js';
 import CircleAnimation from './RankUsers/CircleAnimation.js';
 import AdminPosterPdf from './UniverstyPdf/AdminPosterPdf.js';
+import Eroor from './Eroor/Eroor.js';
+import Draw from './DrawCompon/Draw.js';
+ 
+import FlexYoutube from './FlexYoutube/FlexYoutube.js';
+import Ai from './aiModels/Ai.js';
+import FlexSiri from './aiModels/FlexSiri.js';
+import AiTesting from './AiTesting/AiTesting.js';
+import AudioRecorder from './ReallChat/AudioRecorder.js';
+ 
 const App = () => {
  const [online,setIsOnline] = useState(true)
  // here dedict if i onlin or no
  
+    
+//   
   return (
     <>
       {online === false ? (
@@ -36,7 +47,7 @@ const App = () => {
       ) : (
         <>
           <Routes>
-            <Route path='/Headers' element={<><NavBar/> <Body/></>} />
+            <Route path='/Headers' element={<> <NavBar/> <Body/></>} />
             <Route path='/login' element={<><Login/></>} />
             <Route path='/HeadersTopQuestion' element={<><NavBar/> <HeadersQuestion/></>} />
             <Route path='/Admin' element={<><NavBar/> <Admin/></>} />
@@ -45,18 +56,30 @@ const App = () => {
             <Route path='/MathPage' element={<><MathPage/></>} />
             <Route path='/auth' element={<><Auth/></>} />
             <Route path='/Admin/upload/page' element={<><ImageUpload/></>} />
-            <Route path='/' element={<><FIRSTVIEW/></>} />
-            <Route path='/bluskG' element={<><BuskyHome/></>} />
+            <Route path='/' element={<><FIRSTVIEW/></>} /> 
+               <Route path='/*' element={<><Eroor/>
+            </>} />
+
+
+            <Route path='/bluskG' element={<><Ai/><BuskyHome/></>} />
             <Route path='/card' element={<><Posts/></>} />
             <Route path='/bluskG/freind' element={<><BuskyHomeFreind/></>} />
-            <Route path='/bluskG/chat' element={<><ReallChat/></>} />
+            <Route path='/bluskG/chat' element={<> <ReallChat/></>} />
             <Route path='/testfile' element={<><UplodRellsSection/></>} />
             <Route path='/flexProfile' element={<><ProfileBuskt/></>} />
             <Route path='/RankPage' element={<><Rank/></>} />
             <Route path='/blsuky/pdf' element={<><AdminPosterPdf/></>} />
-         
+            <Route path='/blsuky/Draw' element={<><Draw/></>} />
+            <Route path='blsuky/flexYoutube' element={<><Ai/><FlexYoutube/></>} />
+            <Route path='/ai' element={<><Ai/></>} />
+            <Route path='/ping' element={<><FlexSiri/></>} />
+            <Route path='/AiTesting' element={<><AiTesting/></>} />
+            {/* <Route path='/testRecord' element={<><AudioRecorder/></>} /> */} 
+            {/* // check this in this page app in auth  */}
+                
           </Routes>
           <ToastContainer />
+  
         </>
       )}
     </>

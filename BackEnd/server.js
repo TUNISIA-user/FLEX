@@ -6,14 +6,14 @@ import Admin from "./dbAdminSchema.js"
 import User from "./dbModel1.js"
 import ChatSession from "./dbChatMessages.js"
 import ChatTalking  from "./dbTalking.js"
-import postBluskyg from "./dbCurrentPost.js"
+import postBluskyg from "./dbCurrentPost.js" 
 import Reels from "./dbReels.js"
 import Pdf from "./PdfSehma.js"
 import cors from "cors"
 import multer from 'multer';
 import path from "path"
 import dotenv from 'dotenv';
-import { WebSocketServer } from 'ws';
+import { Server } from 'socket.io';
 import http  from "http"
 dotenv.config();
  
@@ -22,8 +22,7 @@ const app = express();
 
 
 
-
-
+// web socket io 
 
 const PORT = process.env.PORT ;
 app.use(bodyParser.json());
@@ -36,7 +35,7 @@ mongoose.connect(process.env.CONNECTION_DATABASE)
 })
 .catch(err => console.error(err));
 app.use(cors({
-    origin: allowedOrigins,
+    origin: ['http://flex-tunisia-users-projects.vercel.app','https://flex-tunisia-users-projects.vercel.app', 'http://localhost:3000',"https://flex-roan.vercel.app","https://flex-social-social-app.onrender.com"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"]
 }));
@@ -104,21 +103,50 @@ app.get("/all/pdf",async(req,res)=>{
 
  
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
 
+
+ 
+const server = http.createServer(app);
+const io = new Server(server,{
+    cors:{
+        origin: ['http://flex-tunisia-users-projects.vercel.app','https://flex-tunisia-users-projects.vercel.app', 'http://localhost:3000',"https://flex-roan.vercel.app"],
+        
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    }
+});
+ 
+ 
+ 
+ 
+io.on('connection', (socket) => {
+    // console.log('Client connected:', socket.id);
+  
+
+    console.log(socket.id)
+     
+     socket.emit("notifactionFlex",socket.id)
+
+    socket.on('disconnect', () => {
+        console.log('Client disconnected:', socket.id);
+    });
+
+});
 
  
 
 
-
-
+server.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
 
  //--------------------------------------------------------------------
 
 
 app.get("/",(req,res)=>res.status(200).json("hello test api +9999"))
+
+
+ 
+
 
 
 app.post("/postQuestion", async (req, res) => {
@@ -135,6 +163,9 @@ app.post("/postQuestion", async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 });
+
+
+
 app.get("/getQuestion",async(req,res)=>{
     try{ 
 
@@ -147,26 +178,30 @@ app.get("/getQuestion",async(req,res)=>{
         console.log(`this eroor  by ${eroor}`)
     }
 })
-app.post('/setUserWithAnswer', upload.single('imgUser'), async (req, res) => {
-    
-      try {
-        // Create a new user with the uploaded file data and other form data
-        const formattedFilePath =  req.file.path.replace(/\\/g, '/');
-    
+// here change user data with this user
+app.post('/setUserWithAnswer', async (req, res) => {
+    try {
+      const { username, email, password, imgUser } = req.body;
+  
+      // Create a new user with the uploaded image URL and other form data
+      const newUser = new User({
+        username,
+        email,
+        password, // Store password as plain text (not recommended for production)
+        imgUser,  // Cloudinary URL
+      });
+  
+      await newUser.save();
+      res.status(200).json(newUser);
+    } catch (error) {
+      res.status(404).json({ message: error.message });
+      console.error(`Error occurred: ${error}`);
+    }
+  });
+  
 
-        const setAnswer = new User({
-          ...req.body,
-          imgUser: formattedFilePath 
 
-        });
-      
-        await setAnswer.save();
-        res.status(200).json(setAnswer);
-      } catch (error) {
-        res.status(404).json({ message: error.message });
-        console.error(`The error: ${error}`);
-      }
-    });
+    // fix this  pictuer here 
 app.post("/setAdmin",async(req,res)=>{
     try{
      const setAdmin = new Admin(req.body)
@@ -391,6 +426,7 @@ app.get("/getChat/:userid",async(req,res)=>{
 app.get("/auth/:email",async(req,res)=>{
     try{
      const response = await User.find({email:req.params.email})
+     // here just add password for u to know which user you gonna user
      res.status(202).json(response)
     }
     catch(eroor){
@@ -561,6 +597,7 @@ app.post("/accesMessage/:id", async (req, res) => {
                 { users: { $elemMatch: { $eq: userId } } }  
             ]
         });
+        
 
         if (isChat) {
 
@@ -573,8 +610,14 @@ app.post("/accesMessage/:id", async (req, res) => {
                 imgProfile : imgProfile,
 
             });
-            await isChat.save(); 
+             
+            io.emit("PrvMessages", { room: isChat });
+
+            await isChat.save();
+            // like here if i push some message to user  get preveous message and increamnt to my new message and send it again to front and this mean should be do  the logic if this chat exisit get it instead this telle me this good idea for this or no ? 
             return res.json(isChat);  
+           
+
         } else {
              
             const newChat = new ChatTalking({
@@ -583,6 +626,7 @@ app.post("/accesMessage/:id", async (req, res) => {
             });
             await newChat.save(); // Save the new chat
             return res.json(newChat); // Return the new chat
+       
         }
 
     } catch (error) {
@@ -647,6 +691,7 @@ app.get("/get/access/specif/:id", async (req, res) => {
         users: userId // Check if the user ID is in the users array
       });
   
+     
       if (chats.length > 0) {
         let TalkingWith  = []
         const matchedChat = chats.filter(chat=>chat.users.includes(userId))
@@ -772,6 +817,7 @@ app.get("/get/date/user/:id",async(req,res)=>{
 app.post("/post-posts/:id", async (req, res) => {
     try {
         const findUser = await User.findById(req.params.id);
+
         if (!findUser) {
             return res.status(404).json({ message: "We couldn't find the user" });
         }
@@ -794,13 +840,40 @@ app.post("/post-posts/:id", async (req, res) => {
 
         // Optionally populate user information
         const populatedPost = await postBluskyg.findById(uploadPosts._id)
-
-        res.status(200).json(populatedPost);  // Return the created post
+       
+            io.emit("event_post",populatedPost)
+            
+        res.status(200).json(populatedPost);   
     } catch (error) {
         console.error("Error:", error);
         res.status(500).json({ message: error.message || "An unknown error occurred" });
     }
 });
+
+// here let create fast api 
+
+app.post("/postPost/profileY/:id", async (req, res) => {
+    try {
+        const FindIdUser = await User.findById(req.params.id);
+        
+        if (!FindIdUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+   
+ 
+
+        
+        FindIdUser.postIpostsINthisApp.push(req.body);
+        await FindIdUser.save();
+
+        res.status(200).json(FindIdUser);  // Return updated user document
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: error.message || "An unknown error occurred" });
+    }
+});
+
 // post comment 
 app.post('/post-comment/:id', async (req, res) => {
     try {
@@ -1223,7 +1296,7 @@ app.post("/api/author/profile/:id",async(req,res)=>{
 app.post("/send/notification/author/:id", async (req, res) => {
     try {
         
-
+       
         // Use $push to add the notification to the 'noTifaction' array
         const Post = await User.findByIdAndUpdate(
              req.params.id,
@@ -1236,6 +1309,13 @@ app.post("/send/notification/author/:id", async (req, res) => {
             return res.status(404).json("We didn't find a user");
         }
 
+   
+        console.log(req.body)
+        if(req.body.myid!=req.body.recipientId){
+            console.log("you have match with this ")
+            io.emit(`${req.body.recipientId}`, { type: "increment", data: req.body });
+            
+        }
         res.status(200).json(Post); // Send back the updated user document
 
     } catch (error) {
@@ -1441,4 +1521,162 @@ app.post("/deleteConversation/:id", async (req, res) => {
 )
 
 
+// --- this section for get my post post it in this  app for thi react 🎉🎉🎉-------
+// click  in top user to get his id 
 
+app.post("/getMyposts/:id",async(req,res)=>{
+    try{
+ 
+         const getDataFromClient  = await User.findById(req.params.id)
+         if(!getDataFromClient){
+            res.status(404).json("we dont find this user in this data base ")
+            
+         }                           
+         const v = getDataFromClient.postIpostsINthisApp
+
+         res.status(200).json({myallData : getDataFromClient , specifPost:v })
+    }catch(eroor){
+        console.log(eroor)
+    }
+})
+
+
+
+
+//
+
+// app.get("/getMyposts/:id", async (req, res) => {
+//     try {
+//         const user = await User.findById(req.params.id);
+
+//         if (!user) {
+//             return res.status(404).json({ message: "User not found in the database." });
+//         }
+
+//         const posts = user.postIpostsINthisApp;
+//         res.status(200).json({ myallData: user, specifPost: posts });
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ message: "An error occurred on the server." });
+//     }
+// });
+
+//
+
+
+// build Tehme 
+
+
+
+app.post("/ChangeTehme/:id", async (req, res) => {
+    try {
+        const {userId} = req.body; 
+        const {nameTheme}  = req.body
+ 
+        let UpdateChat  = await ChatTalking.findOneAndUpdate({
+
+            $and: [
+                { users: { $elemMatch: { $eq: req.params.id } } }, 
+                { users: { $elemMatch: { $eq: userId } } }  
+            ]
+
+
+        },
+
+        {$set : {tehmeTemplte:nameTheme}},
+        {new : true}
+    
+    );
+        if(!UpdateChat){
+            res.status(404).json("we dont found this caht in this data bae")
+        }
+         
+    
+    res.status(200).json({ message: "Chat blocked successfully", chat: UpdateChat });
+    }
+   catch(eroor){
+    res.status(404).json(eroor)
+   }
+
+}
+)
+
+
+// web socket messages 
+
+
+// app.post("/check/users/freind/:id",async(req,res)=>{
+
+//     try{
+    
+//         const { userId } = req.body; 
+     
+//         let isChat = await ChatTalking.findOne({
+//             $and: [
+//                 { users: { $elemMatch: { $eq: req.params.id } } }, 
+//                 { users: { $elemMatch: { $eq: userId } } }  
+//             ]
+//         });
+//         if (isChat) {
+//             return res.status(200).json({ isFriend: true });
+//           } else {
+//             return res.status(404).json({ isFriend: false });
+//           }
+    
+    
+//     }catch(eroor){
+//         res.status(404).json({message : eroor})
+//     }
+    
+//     })
+
+// check if user exsit here 
+
+
+
+app.post("/check/users/freind/:id",async(req,res)=>{
+
+    try{
+    
+        const { userId } = req.body
+
+       const Math  = await  User.findById(req.params.id)
+       
+       const FilterData = Math.myListChatFriend.find((track)=>track===userId)
+     
+         res.status(200).json(FilterData?true:false)
+    
+    }catch(eroor){
+        res.status(404).json({message : eroor})
+    }
+    
+    })
+
+    //------------------------------
+
+
+    app.post("/request/:id",async(req,res)=>{
+
+        try{
+        
+            
+    
+           const Math  = await  User.findById(req.params.id)
+           
+ 
+         
+             res.status(200).json(Math.username)
+        
+        }catch(eroor){ 
+            res.status(404).json({message : eroor})
+        }
+        
+        })
+
+
+        
+
+
+
+
+   

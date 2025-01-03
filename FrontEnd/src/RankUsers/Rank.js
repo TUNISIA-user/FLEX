@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios  from "../Component/axios";
+import axios from "../Component/axios";
 import {
   LineChart,
   Line,
@@ -11,13 +11,6 @@ import {
 } from "recharts";
 import CircleAnimation from "./CircleAnimation";
 
-// Data with unique image URLs
-const datax = [
-   
-];
-
-
- 
 // CustomizedDot component to render each point's image
 const CustomizedDot = (props) => {
   const { cx, cy, payload } = props;
@@ -78,63 +71,62 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 export default function Rank() {
-  // Dynamic width calculation: 150px per data point
-  
-  const [Dynamic,setDynimac] = useState([])
+  const [datax, setDatax] = useState([]); // Store the chart data properly
+  const [dynamic, setDynamic] = useState([]); // Store API data
 
-  const UpdateRanksPeople = async()=>{
-    try{
-     const {data}  = await axios.get(`/getScoreRank`)
-         
-         setDynimac(data)
-
-    }catch(error){
-        console.log(error)
+  // Function to update ranks
+  const updateRanksPeople = async () => {
+    try {
+      const { data } = await axios.get(`/getScoreRank`);
+      setDynamic(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
-}
+  };
 
+  // Fetch ranks on component mount
+  useEffect(() => {
+    updateRanksPeople();
+  }, []);
 
+  // Update chart data when dynamic data changes
+  useEffect(() => {
+    const newData = dynamic.map((item) => ({
+      name: item.email,
+      uv: 4000,
+      pv: item.ScoreRank,
+      amt: 2400,
+      img: `${process.env.REACT_APP_API_KEY}/${item.imgUser}`,
+    }));
+    setDatax(newData);
+  }, [dynamic]);
 
-
-  useEffect(()=>{
-    UpdateRanksPeople()
-    
-},[])
-
-useEffect(()=>{
-    
-    Dynamic.forEach((item)=>{
-        console.log(item)
-        datax.push(
-            { name: item.email, uv: 4000, pv:item.ScoreRank, amt: 2400, img: `${process.env.REACT_APP_API_KEY}/${item.imgUser}` },
-
-        )
-        
-    })
-},[Dynamic])
- 
   const chartWidth = datax.length * 150;
 
   return (
     <div style={{ backgroundColor: "#0e1217", width: "100%", overflowX: "auto" }}>
-      <LineChart
-        width={chartWidth}
-        height={700}
-        data={datax}
-        margin={{ top: 30, right: 30, left: 20, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip content={<CustomTooltip />} />
-        <Legend />
-        <Line
-          type="monotone"
-          dataKey="pv"
-          stroke="#8884d8"
-          dot={<CustomizedDot />}
-        />
-      </LineChart>
+      {datax.length > 0 ? (
+        <LineChart
+          width={chartWidth}
+          height={700}
+          data={datax}
+          margin={{ top: 30, right: 30, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip content={<CustomTooltip />} />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="pv"  
+            stroke="#8884d8"
+            dot={<CustomizedDot />}
+          />
+        </LineChart>
+      ) : (
+        <p style={{ color: "#fff", textAlign: "center" }}>Loading chart data...</p>
+      )}
       <CircleAnimation />
     </div>
   );

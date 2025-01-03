@@ -1,6 +1,6 @@
 .reallchat{
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,6 +31,7 @@
     justify-content: space-between;
     align-content: center;
     align-items: center;
+    position: sticky;
 }
  
 .itemcards{
@@ -45,7 +46,7 @@
 
 
 .scrennMessage{
-    background-color: #161E27;
+ 
     width: 100%;
     height: 100%;
     overflow-x: auto;
@@ -112,6 +113,44 @@ justify-content: flex-start;
      }
       
     }
+
+.SpecailVoice{
+ 
+       width: 60%;
+       padding: 10px;
+       margin-left: auto;
+       h2{
+           background-color: white;
+           color: black;
+           margin: 10px; background-color:transparent ;
+           border-radius: 10px;
+           padding: 4px;
+           width: 100%;
+        }
+
+      
+
+}
+
+.SpecailVoice2{
+ 
+ 
+    width: 40%;
+    padding: 10px;
+     
+     h2{
+        background-color: white;
+        color: black;
+        margin: 10px;
+        border-radius: 10px;
+        padding: 2px;
+        width: 100%;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+     }
+   
+
+}
+
 .oneToneLeft{
     width: 40%;
     padding: 10px;
@@ -119,7 +158,10 @@ justify-content: flex-start;
     h2{
         background-color: white;
         color: black;
-        margin: 10px; background-color:#208BFE ;
+        margin: 10px; 
+        /* background-color:#208BFE ; */
+        background: linear-gradient(135deg, #833ab4, #5851db, #405de6);
+
         border-radius: 10px;
         padding: 4px;
         width: 100%;
@@ -168,3 +210,99 @@ justify-content: flex-start;
      width: 50%;
 } */
  
+
+@media only screen and (max-width: 600px) {
+  
+.chatPage {
+    width: 100%;
+    height: 100%;
+    background-color: #161E27;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid grey;
+}
+
+.containerSeeTheCurrentImages {
+    background-color: beige;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 98%;
+    cursor: pointer;
+}
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  .coiseClor{
+     
+    width: 90%;
+    height: 400px;
+    background-color: rgba(45, 66, 106, 0.75);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    position: absolute;
+    top: 57px;
+    left: 24px;
+    overflow-y: auto;
+
+   
+  }
+
+  .wallper1{
+    width: 30%;
+   
+  }
+.wallper1 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+
+.offSection{
+
+     color: white;
+    position: absolute;
+    right: 5px;
+    top: -11px;
+    cursor: pointer;
+    font-size: 45px;
+}
+
+
+
+
+@media only screen and (max-width: 900px) {
+    .coiseClor {
+        width: 90%;
+        height: 400px;
+        background-color: rgba(45, 66, 106, 0.75);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3px;
+        position: absolute;
+        top: 57px;
+        left: 24px;
+        overflow-y: auto;
+
+    }
+    
+  }
+
+

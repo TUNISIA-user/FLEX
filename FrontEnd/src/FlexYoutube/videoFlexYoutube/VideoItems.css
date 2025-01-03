@@ -1,0 +1,42 @@
+.videoItems{
+    background-color: rebeccapurple ;
+    width:24%;
+}
+.TopVideo video{
+    width: 100%;
+    cursor:all-scroll;
+
+}
+.middleVideo{
+    background-color: rgb(66, 59, 59);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    padding: 3px;
+    gap: 4px;
+}
+.detailsVideosProfilex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(183, 187, 192);
+    gap: 10px;
+}
+.detailsVideos{
+    display: flex;
+    align-items: center;
+    color: rgb(183, 187, 192);
+
+font-weight: bold;
+}
+
+.detailsVideo-viwes{
+    color: aliceblue;
+    
+}
+
+.middleVideo-Description{
+    font-size: 13px;
+    color: rgb(183, 187, 192)
+}

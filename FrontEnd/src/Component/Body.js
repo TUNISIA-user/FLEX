@@ -9,18 +9,18 @@ import HeadersQuestion from './HeadersQuestion'
 import { useGlobalContext } from '../Store/GlobalContext'
 const Body = () => {
   const {TokenUser} = useGlobalContext()
-  console.log(TokenUser)
+ 
   const Nav = useNavigate()
   const [question,setQuestion]  = useState([])
   const HandelApi = async()=>{
     try{
-      const response = await axios.get("/getQuestion")
-      // console.log(response.data)
-      setQuestion(response.data.sort((a,b)=>b.view.length-a.view.length))
-   
+      // const response = await axios.get("/getQuestion")
+      // // console.log(response.data)
+      // setQuestion(response.data.sort((a,b)=>b.view.length-a.view.length))
+   setQuestion(null)
     }
     catch(index){
-      console.log(`this eroor by ${index}`)
+      //  
     }
   }
  

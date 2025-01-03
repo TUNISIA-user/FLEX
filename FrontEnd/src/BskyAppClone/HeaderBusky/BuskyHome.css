@@ -1,4 +1,81 @@
+
+
+
+
+.traficant {
+    width: 73%;
+    color: black;
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    background: #cbd8e6;
+    gap: 12px;
+    animation: shadowEffect 4s infinite; /* Add animation */
+    box-shadow: rgb(255, 255, 255) 0px 0px 20px;
+}
+
+/* Keyframe animation for box-shadow */
+@keyframes shadowEffect {
+    0% {
+        box-shadow: 0px 0px 20px rgb(255, 255, 255); /* white shadow */
+    }
+    25% {
+        box-shadow: 0px 0px 20px rgb(0, 0, 0); /* black shadow */
+    }
+    50% {
+        box-shadow: 0px 0px 20px rgb(255, 165, 0); /* surprise orange */
+    }
+    75% {
+        box-shadow: 0px 0px 20px rgb(34, 193, 195); /* surprise teal */
+    }
+    100% {
+        box-shadow: 0px 0px 20px rgb(138, 43, 226); /* surprise purple */
+    }
+}
+
+ 
+
+/* .rotateD{
+    animation: topx 2s infinite linear;
+    margin-left: 3px;
+}
+
+@keyframes topx {
+    from{
+        scale: 0.66;
+        
+    }
+    
+    to{
+        scale: 1.10    ;
+      
+    }
+} */
+
+
+
+
+
 /* section comment  */
+
+
+
+.SiriFlex{
+     
+    position: absolute;
+    top: 0;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+     width: 100%;
+}
+
+
+/* 
+ serie section  */
+
+
+
 
 .cercle{
     position: absolute;
@@ -217,6 +294,9 @@
         }
         .imgconainerPdf img {
             border-radius: 10px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 }
@@ -348,6 +428,10 @@
 @media only screen and (max-width:900px) {
  /* section comment  */
 
+ .cotainerSetting{
+    position: absolute;
+    top: -282px;
+ }
 
 .SectionComment{
     position: absolute;
@@ -371,12 +455,12 @@
     }
  
     .routerComment{
-        background-color: #208BFE;
+        background-color: #0E1217;
          display: flex;
          align-items: center;
         .routerCommentIcon{
             display: flex;
-            justify-content: flex-start;
+           
             gap: 1px;
             cursor: pointer;
             color: white;
@@ -466,9 +550,9 @@
    font-weight: bold;
    padding: 10px;
    border-radius: 10px;
-   width: 90%;
+  
    border: 1px solid grey;
-
+   width: 100%;
    margin-top: 10px;
 }
 
@@ -493,8 +577,8 @@
     .containerAppF{
         
         margin-top: 10px;   
-        background-color: #1A1F26;
-        margin-left: 10px;
+        background-color: 0e1217;
+        margin-left: 0px;
         padding: 10px;
         border-radius: 10px;
         display: flex;
@@ -502,6 +586,7 @@
         justify-content: space-between;
         width: 100%;
         color: white;
+        
        
         
         .buttonPost button{
@@ -524,6 +609,9 @@
         }
         .imgconainerPdf img {
             border-radius: 10px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 }
@@ -827,7 +915,7 @@ overflow: auto;
     .blockCardappear{
         width: 100%;
         padding: 5px;
-        background-color: red;
+         
         position: absolute;
         z-index: 2;
         right: 0;
@@ -863,12 +951,12 @@ overflow: auto;
     
     .containeroverflow{
     height:50vh;
-    background-color: green;
+
     overflow: auto;
     }
     
     .specifitem{
-        background-color: rgb(119, 197, 23);
+       
         display: flex;
         justify-content: space-around;
         margin: 10px;
@@ -890,7 +978,7 @@ overflow: auto;
     .blockCardappear{
         width: 100%;
         padding: 5px;
-        background-color: red;
+         
         position: absolute;
         z-index: 2;
         right: 0;
@@ -910,7 +998,7 @@ overflow: auto;
         }
     }
     .videoComment{
-        background-color: yellow;
+        
         /* width: 100px; */
          
         display: flex;
@@ -926,12 +1014,12 @@ overflow: auto;
     
     .containeroverflow{
     height:50vh;
-    background-color: green;
+    
     overflow: auto;
     }
     
     .specifitem{
-        background-color: rgb(119, 197, 23);
+        
         display: flex;
         justify-content: space-around;
         margin: 10px;
@@ -982,21 +1070,23 @@ overflow: auto;
     width: 30%;
     height: 100%;
     background-color: var(--background-color);
-   
+
 
 }
 .busky--posts{
     width: 38%;
     height: 100%;
-    background-color: var(--background-color);
-    scroll-behavior: smooth;
+   background-color: var(--background-color); 
+    
+    /* scroll-behavior: smooth; */
     border-left: 0.44px solid grey;
     border-right: 0.44px solid grey;
 }
 .busky--search--useres{
     width: 27%;
     height: 100%;
-    background-color: var(--background-color);
+    background-color: var(--background-color);  
+ 
 }  
 
 /* .busky--navbar{
@@ -1024,7 +1114,10 @@ overflow: auto;
  
 .Discover{
   
+    /* height: 85.8898888vh;
+      */
     height: 85.8898888vh;
+    
      /* // fix this area bro  */
     overflow-y:auto;
     -ms-overflow-style: none;  /* IE and Edge */
@@ -1048,7 +1141,9 @@ overflow: auto;
  .busky--navar-seetingrr{
     width: 47%;
 
-    background-color: var(--background-color);
+    background-color: var(--background-color); 
+        
+ 
     color: whitesmoke;
     font-weight: bold;
     font-size: 20px;
@@ -1115,7 +1210,8 @@ overflow: auto;
     margin-left: 30px;
     width: 61%;
     height: 90%;
-    background-color: var(--background-color);
+    background-color: var(--background-color); 
+       
  }
  .busky--links{
     display: flex;
@@ -1195,7 +1291,7 @@ overflow: auto;
   
     .busky--navar-seetingrr {
         width: 60%;
-        background-color: rgb(14, 13, 13);
+        /* background-color: rgb(14, 13, 13); */
         color: whitesmoke;
         font-weight: bold;
         font-size: large;
@@ -1224,21 +1320,30 @@ overflow: auto;
 
   
   @media screen and (max-width: 930px){
+    
     .busky--navar-seetingrr {
         width: 100%;
-        background-color: rgb(14, 13, 13);
+    
         color: whitesmoke;
         font-weight: bold;
         font-size: large;
+        display: flex;
+        height: 43px;
+        flex-direction: c;
+        /* flex-direction: row; */
+        /* gap: 19px; */
+        justify-content: space-around;
         .busky--container--section span{
             display: none;
         }
+        
 
         .busky--container--section {
           
             display: flex;
             justify-content: center;
             align-items: center;
+            
         }
 
     }
@@ -1299,10 +1404,16 @@ overflow: auto;
       }
   }
 
+ 
   
 
 @media screen and (max-width:630px){
 
+    
+   
+.moon{
+    margin-left: 17px;
+}
     .busky-app-descibe-user{
         
       width:350px;
@@ -1310,7 +1421,7 @@ overflow: auto;
     }
 
     .containertest{
-        background-color:#b40975;
+        background-color: #12161b;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1321,7 +1432,7 @@ overflow: auto;
         position: absolute;
         top: 70%;
         z-index: 1;
-        left: 5%;
+        left: 6%;
         transform: translate(-50%,-50%);
     }
 
@@ -1329,7 +1440,7 @@ overflow: auto;
 
 
     .Discover {
-        height: 90vh;
+        height: 100vh;
         overflow-y: auto;
         -ms-overflow-style: none;
         scrollbar-width: none;
@@ -1380,6 +1491,7 @@ overflow: auto;
         padding: 3px;
         img{
             width: 24px;
+            margin-left:32px;
         }
     }
 
@@ -1610,3 +1722,64 @@ overflow: auto;
   transform: translate(-50%,-50%);
   
  }
+
+
+.iframe{
+  
+    font-size: 40px;
+    position: absolute;
+    color: white;
+    right: 0;
+    bottom:130px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 9px;
+     
+}
+ 
+.zina{
+   background-color: #172739; 
+   width: 29px;
+   height: 38px;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left:7px;
+  border-radius: 10px;
+  padding: 6px;
+}
+
+
+.menuPage{
+   
+    position: absolute;
+    left: 50%;
+    top: 50%;
+     transform: translate(-50%,-50%);
+     z-index: 3;
+     width:90%;
+     height: 400px;
+    border-radius: 20px;
+
+}
+/* 
+this for phone responsive a lot 
+.iframe{
+    cursor: pointer;
+    font-size: 50px;
+    position: absolute;
+    color: white;
+    right: 0;
+    
+} */
+
+#dd{
+    display: flex;
+}
+
+@media screen and (max-width:630px){
+ 
+    #dd{
+        display: none;
+    } 
+}

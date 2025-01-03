@@ -97,7 +97,7 @@ const AdminPosterPdf = () => {
 
   return (
     <div style={{ backgroundColor: '#1a202c', color: 'white', height: '100vh' }}>
-      <div style={{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"row"}}>
+      <div className='func'>
   
 
 
@@ -108,8 +108,8 @@ const AdminPosterPdf = () => {
 
    <Stack spacing={3}>
      <Input focusBorderColor='lime' 
-      className='jj'
-        style={{width: "383px"}}
+       className='jj'
+        style={{width: "300px"}}
      placeholder={`POST YOUR PDF MR 
       ${TokenUser.username}`} 
       onChange={(e)=>setGroupName(e.target.value)}

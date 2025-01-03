@@ -53,7 +53,7 @@ const Posts = ({ item, updateMessage, passFunc ,pass2Func}) => {
         setIsLiked(false);
       }
     } catch (error) {
-      console.error(`Error: ${error}`);
+     //
     }
   };
 
@@ -169,17 +169,47 @@ const [ShareLink,setShareLink] = useState("")
   }
  
  
+
+  const Handel__reposT_React = async()=>{
+     console.log(item,"herewefo")
+     try{
+      const addToMyPost = await axios.post(`/postPost/profileY/${TokenUser._id}`,{
+       userId:TokenUser._id,
+       testeur:"notShare",
+       myPersonnalIdea : "hhha slm nike",
+       post:{
+           text:item.post.text,
+           like:0,
+           share:0,
+           imgItem:item.post.imgItem
+   
+       },
+       onwerHasPictuer : TokenUser?.imgUser,
+       ownerUserName : TokenUser?.username,
+       email : TokenUser?.email,
+       LikesPost :[],
+       repostUser :[],
+       Comment:[],
+       email:TokenUser?.email,
+       shareItFrom:[],
+   })
+   addToMyPost && alert("here we go from notShare ")
+    
+    }catch(eroor){
+     console.log("thsi eroor by",eroor)
+    }
+  }
   return (
     
-    <div className='busky--app-card-post'  >
+    <div className='busky--app-card-post'   >
       
-      <div className='busky-app-avatar'>
+      <div className='busky-app-avatar' >
         <WrapItem>
        
                  <Link to={"/flexProfile"}>     <Avatar
             size='md'
            
-            src={`${process.env.REACT_APP_API_KEY}/${item.onwerHasPictuer}`}
+            src={`${item.onwerHasPictuer}`}
             onClick={()=>HandelSeeProfile()}
           /> </Link>
 
@@ -187,7 +217,7 @@ const [ShareLink,setShareLink] = useState("")
   
       </div>
 
-      <div className='busky-app-content' >
+      <div className='busky-app-content'  >
         <div className='busky-app-info-user' style={{ display: "flex", alignItems: "center" }}>
           <h2 className='busky-username'>
             {item?.ownerUserName} 🩸 
@@ -195,14 +225,14 @@ const [ShareLink,setShareLink] = useState("")
               <p style={{color:"#505059"}}>{new Date(item.createdAt).toLocaleDateString()}</p>
             </h3>
           </h2>
-          <div className='popelwannajoin' style={{ marginLeft: "80px" }}>
+          <div className='popelwannajoin' style={{ marginLeft: "5px" }}>
             <AvatarGroup size='md' max={3}>
               {item.LikesPost.map((like) => 
                 like.id !== item.userId && (
                   <Avatar 
                     key={like.id}
                     name={like.name}
-                    src={`${process.env.REACT_APP_API_KEY}/${like.imgUser}`}
+                    src={`${like.imgUser}`}
                   />
                 )
               )}
@@ -210,7 +240,7 @@ const [ShareLink,setShareLink] = useState("")
           </div>
         </div>
 
-        <div className='busky-app-descibe-user' >
+        <div className='busky-app-descibe-user thisgonnahelpme'  >
           <p className='psotCommentEtoile'  >{item.post?.text}<small style={{color:"#0056b3"}}> #0001</small></p>
 
         </div>
@@ -228,14 +258,14 @@ const [ShareLink,setShareLink] = useState("")
 </div>
 
 {/* <div className='busky-app-info-icons'> */}
-        <div className='busky-app-info-iconss'  style={{display:"flex",width:"100%",justifyContent:"space-between",margin:"13px"}}>
+        <div className='busky-app-info-iconss'  style={{display:"flex",width:"90%",justifyContent:"space-between",margin:"13px"}}>
           <div className='busky--app-info-icons-1' style={{cursor:"pointer"}}>
             <img src='./commenter.png' alt='' onClick={() => updateMessage(true, item)} />
             <span>{item.Comment.length}</span>
           </div>
 
           <div className='busky--app-info-icons-1'  style={{cursor:"pointer"}}>
-            <img src='./arrow.png' alt='' />
+            <img src='./arrow.png' alt='' onClick={()=>Handel__reposT_React()} />
             <span>{item.post.share}</span>
           </div>
 
@@ -251,12 +281,12 @@ const [ShareLink,setShareLink] = useState("")
             <span>{item.LikesPost.length}</span>
           </div>
 
-          <div className='busky--app-info-icons-1'>
+          <div className='busky--app-info-icons-1' >
            
             {!UpdateProfile ?   <img src='./plus.png' alt=''   style={{cursor:"pointer"}}  onClick={()=>HelpChange()}/> :
             
             <span class="material-symbols-outlined" onClick={()=>setUpdateProfile(false)}  style={{cursor:"pointer"}}> close</span>}
-            <div style={{position:"relative",top:"10px",right:"-3px",cursor:"pointer",display:UpdateProfile?"block":"none"}} className='square'>
+            <div style={{position:"absolute",left:'50%',top:'50%',cursor:"pointer",display:UpdateProfile?"block":"none"}} className='square'>
               
               <h2 style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:"6px"}} onClick={()=>getLink()}>copy Link   <svg fill="none" viewBox="0 0 24 24" width="20" height="20"><path fill="hsl(211, 20%, 73.6%)" fill-rule="evenodd" clip-rule="evenodd" d="M8.17 4A3.001 3.001 0 0 1 11 2h2c1.306 0 2.418.835 2.83 2H17a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h1.17ZM8 6H7a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-1v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V6Zm6 0V5a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v1h4Z"></path></svg></h2>
               <h2 style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:"6px"}}>Rapport <svg fill="none" viewBox="0 0 24 24" width="20" height="20"><path fill="hsl(211, 20%, 73.6%)" fill-rule="evenodd" clip-rule="evenodd" d="M11.14 4.494a.995.995 0 0 1 1.72 0l7.001 12.008a.996.996 0 0 1-.86 1.498H4.999a.996.996 0 0 1-.86-1.498L11.14 4.494Zm3.447-1.007c-1.155-1.983-4.019-1.983-5.174 0L2.41 15.494C1.247 17.491 2.686 20 4.998 20h14.004c2.312 0 3.751-2.509 2.587-4.506L14.587 3.487ZM13 9.019a1 1 0 1 0-2 0v2.994a1 1 0 1 0 2 0V9.02Zm-1 4.731a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Z"></path></svg></h2>
@@ -280,7 +310,9 @@ const [ShareLink,setShareLink] = useState("")
           </div>
         </div>
       </div>
+      
     </div>
+
   );
 };
 

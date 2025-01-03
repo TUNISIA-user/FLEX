@@ -1,0 +1,64 @@
+import React, { useState, useEffect } from 'react';
+ 
+const WebSocketComponent = () => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const socketUrl = 'ws://localhost:8080'; // WebSocket server URL
+
+  useEffect(() => {
+    setLoading(true);
+
+    // Open WebSocket connection
+    const socket = new WebSocket(socketUrl);
+
+    // When WebSocket connection is established
+    socket.onopen = () => {
+      console.log('Connected to WebSocket server 🎉');
+      // Send any required data to server on connect (if needed)
+      socket.send(JSON.stringify({ type: 'getData', id: TokenUser._id }));
+    };
+
+    // Receive message from WebSocket server
+    socket.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      if (message.type === 'newData') {
+        const data = message.data;
+
+        // Filter data as per your logic
+        const filteredData = data.filter((author) => author._id !== TokenUser._id);
+        setUsers(filteredData);
+        setLoading(false);
+      }
+    };
+
+    // Handle any errors
+    socket.onerror = (error) => {
+      console.error('WebSocket error:', error);
+    };
+
+    // Clean up WebSocket connection when component unmounts
+    return () => {
+      console.log('WebSocket connection closed 😢');
+      socket.close();
+    };
+  }, [TokenUser]); // Dependency array, so it runs only when TokenUser changes
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      <h1>Users List</h1>
+      {users.map((user) => (
+        <div key={user._id}>{user.name}</div>
+      ))}
+    </div>
+  );
+};
+
+export default WebSocketComponent;
+
+
+//Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+

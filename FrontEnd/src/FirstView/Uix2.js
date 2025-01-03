@@ -8,9 +8,9 @@ const Uix2 = ({close}) => {
         window.localStorage.clear()
         Nav("/")
       }
-
+// make this nave make opacity
   return (
-    <StyledWrapper  style={{display:close?"none":"block"}}>
+    <StyledWrapper  style={{display:close?"none":"block",position:"absolute",top:"30px",zIndex:4}}>
       <div className="uix-card">
 
         <ul className="uix-list">
